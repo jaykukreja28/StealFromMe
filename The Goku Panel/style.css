@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/*Universal selector this means we want to apply this to everything*/
+*{
+    box-sizing: border-box;
+    /*we do this because if we add any border or padding on to 
+    an element so it does'nt actually affect the width of it */
+}
+body{
+    font-family: 'Muli' , sans-serif;
+    margin: 0;
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /*For Removing the scrollbar*/
+}
+
+.container{
+    display:flex;
+    width: 90vw; /*let's say that if there are 100 slices we are using 90 slices of that width*/
+} 
+
+.panel{
+    background-size: auto 100%; /*For preserving rounded corners on big screen we use background size as cover*/
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh;
+    border-radius: 45px;
+    color: #fff;    /* looks clean af :) */
+    cursor: pointer;
+    /* border: 1px solid red; */
+
+    /* Now we will set the flex properties */
+    flex:0.5; /*this will make all the panels even :)
+                and when the card will be active we will change the flex to 5/6 to make it look big af :)
+               */
+    
+    /* Now to separate these out we will use the margin properties */
+    margin: 10px;
+
+    /*Since I want the h3 tag inside absolute the panel we will make posi relative
+        When I changed the position to absolute it totally fucked up the UI :)
+    */
+    position: relative;
+
+    /*Now When we click on the panel it should'nt suddenly be big ... we want it in form of a transition
+    
+     transition: flex 0.7s ease-in;  transition on the flex property in 0.7seconds with an ease-in effect
+    */
+    transition: flex 0.7s ease-in; 
+}
+
+
+
+/*Let's Do H3 tags inside the panel class before using css on active class.*/
+
+.panel h3{
+    font-size: 23px;
+    position: absolute;/*Since we want the text within panel only*/
+
+    /*let's say we want the text in bottom left corner */
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+
+    /*I only want to show the H3 tag text when the panel / card is active*/
+    /*Because this doe'snt look good also */
+    /*So let's set the opacity to 0*/
+    opacity: 0;
+}
+
+
+/*Now ,let's do css for the panel when it is active*/
+
+.panel.active{
+    flex: 5;
+    /* border: 1px solid red; */
+}
+
+
+/*also when it is active we want to show h3 text*/
+.panel.active h3{
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s; /*delay of 0.4s and we have added transition on opacity*/
+}
+
+/*What we can do is when the screen is shrinked to a very narrow size we can decide to show only 3 cards 
+out of those 5
+We can do this with the help of media queries.*/
+
+@media(max-width:480px){
+    /*when size is shrinked we want it to take more size */
+    .container{
+        width: 100vw;
+    }
+
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5){
+        display: none;
+    }
+
+}
+

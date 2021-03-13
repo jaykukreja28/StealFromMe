@@ -1,0 +1,40 @@
+Aim : To Build Expanding Cards / To Make a Panel Of Images or Cards
+
+We are going do  design everything with the help of flexbox
+
+On clicking one these cards (with help of js ), One of the card will become class=active.
+and will expand using css transition.
+
+We are using Background images , Testimonials , FAQ's 
+
+
+-----------------------------------------------------------
+
+Approach : 
+
+How many ever cards you want in your panel .... take those many divs.
+
+Now wrap those divs with a container div.
+
+
+For the first div there will be class panel and active ,  since it belongs to class panel 
+and we need an active card ....that is  expanded first.
+
+To use a link of any image , right click on that image and click on copy image address.
+
+-----------------------------------------------------------
+The html section is now over... time for the boss to step in CSS :)
+ 
+        Now since we have a container wrpped around all the panels we will make it a flexbox
+        so , after we make the container a flexdbox all the panels(i.e are children)
+        will be displayed in flex row format.
+
+        i.e If we have a parent element with display property set to flex , then the children
+        items/elements will be displayed as flex items in flex row format ....  
+        (Helpful in representing bus seats , movie seats ....)
+
+                -----(If we wanted them on top of each other we would do 
+                flex-direction : column;
+                )----- 
+
+        
